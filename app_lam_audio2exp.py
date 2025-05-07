@@ -34,6 +34,8 @@ try:
 except:
     pass
 
+import patoolib
+
 h5_rendering = True
 
 
@@ -119,17 +121,21 @@ def parse_configs():
 
 
 def create_zip_archive(output_zip='assets/arkitWithBSData.zip', base_dir=""):
-    import os
-    if (os.path.exists(output_zip)):
+    if os.path.exists(output_zip):
         os.remove(output_zip)
-        print(f"Reomve previous file: {output_zip}")
-    run_command = 'zip -r '+output_zip+' '+base_dir
-    os.system(run_command)
-    # check file
-    if(os.path.exists(output_zip)):
+        print(f"Remove previous file: {output_zip}")
+    
+    try:
+        # 创建压缩包
+        patoolib.create_archive(
+            archive=output_zip,
+            filenames=[base_dir],  # 要压缩的目录
+            verbosity=-1,         # 静默模式
+            program='zip'         # 指定使用zip格式
+        )
         print(f"Archive created successfully: {output_zip}")
-    else:
-        raise ValueError(f"Archive created failed: {output_zip}")
+    except Exception as e:
+        raise ValueError(f"Archive creation failed: {str(e)}")
 
 
 def demo_lam_audio2exp(infer, cfg):
@@ -260,7 +266,7 @@ def demo_lam_audio2exp(infer, cfg):
         )
 
         demo.queue()
-        demo.launch()
+        demo.launch(inbrowser=True)
 
 
 
