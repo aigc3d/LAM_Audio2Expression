@@ -168,7 +168,7 @@ class Audio2ExpressionInfer(InferBase):
         frame_length = math.ceil(audio.shape[0] / ssr * 30)
         output_context = DEFAULT_CONTEXT.copy()
 
-        volume = librosa.feature.rms(y=audio, frame_length=int(1 / 30 * ssr), hop_length=int(1 / 30 * ssr))[0]
+        volume = librosa.feature.rms(y=audio, frame_length=min(int(1 / 30 * ssr), len(audio)), hop_length=int(1 / 30 * ssr))[0]
         if (volume.shape[0] > frame_length):
             volume = volume[:frame_length]
 
