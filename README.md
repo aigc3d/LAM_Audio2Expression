@@ -27,7 +27,7 @@ To enable ARKit-driven animation of the LAM model, we adapted ARKit blendshapes 
 
 ### To do list
 - [ ] Release Huggingface space.
-- [x] Release [Modelscope demo space](https://www.modelscope.cn/studios/Damo_XR_Lab/LAM-A2E). You can try the demo our pull the demo source code to deploy on your own machine.
+- [x] Release [Modelscope demo space](https://www.modelscope.cn/studios/Damo_XR_Lab/LAM-A2E). You can try the demo or pull the demo source code and deploy it on your own machine.
 - [ ] Release the LAM-A2E model based on the Flame expression.
 - [x] Release Interactive Chatting Avatar SDK with [OpenAvatarChat](https://www.modelscope.cn/studios/Damo_XR_Lab/LAM-A2E), including LLM, ASR, TTS, LAM-Avatars.
 
